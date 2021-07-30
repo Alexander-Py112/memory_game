@@ -20,6 +20,20 @@ function MemoryGame({options, setOptions, highScore, setHighScore}) {
     '#bc6ca7',
     '#bfd833',
   ]
+  const pictureurls = [ 
+    'https://image.16pic.com/00/61/44/16pic_6144095_s.jpg?imageView2/0/format/png',
+    'http://lh3.ggpht.com/_6VYfw1bbhTM/SLoBP5A1YJI/AAAAAAAARpg/BXGzmVSVyfQ/s512/%E8%97%A5%E5%B8%AB%E4%BD%9B015.jpg',
+    'https://lh3.googleusercontent.com/proxy/xsVmMiR7ECTSUB4idcp7erlfgeBk5ZCrmqUJ93EK1IvE8TpvFUlfNbDj9ydeVXSb8n5DwdWqpoNfTogN6rLay7U2mRXCuF6q4FiTfqZnfdzO',
+    'https://www.merit-times.com/news_pic/20200721/1417685_1005472.jpg',
+    'https://nianjue.org/cacheimg/4b/dd/548ce44000f5192c1ba1fb2ed3e2.jpg',
+    'http://www.fodizi.tw/uploadfile/201612/19/055599376.jpg',
+    'https://image.16pic.com/00/61/44/16pic_6144095_s.jpg?imageView2/0/format/png',
+    'http://lh3.ggpht.com/_6VYfw1bbhTM/SLoBP5A1YJI/AAAAAAAARpg/BXGzmVSVyfQ/s512/%E8%97%A5%E5%B8%AB%E4%BD%9B015.jpg',
+    'https://lh3.googleusercontent.com/proxy/xsVmMiR7ECTSUB4idcp7erlfgeBk5ZCrmqUJ93EK1IvE8TpvFUlfNbDj9ydeVXSb8n5DwdWqpoNfTogN6rLay7U2mRXCuF6q4FiTfqZnfdzO',
+    'https://www.merit-times.com/news_pic/20200721/1417685_1005472.jpg',
+    'https://nianjue.org/cacheimg/4b/dd/548ce44000f5192c1ba1fb2ed3e2.jpg',
+    'http://www.fodizi.tw/uploadfile/201612/19/055599376.jpg',
+  ]
 
   useEffect(() => {
     const newGame = []
@@ -28,12 +42,14 @@ function MemoryGame({options, setOptions, highScore, setHighScore}) {
         id: 2 * i,
         colorId: i,
         color: colors[i],
+        pictureurl:pictureurls[i],
         flipped: false,
       }
       const secondOption = {
         id: 2 * i + 1,
         colorId: i,
         color: colors[i],
+        pictureurl:pictureurls[i],
         flipped: false,
       }
 
@@ -119,6 +135,7 @@ function MemoryGame({options, setOptions, highScore, setHighScore}) {
             <Card
               id={index}
               color={card.color}
+              pictureurl={card.pictureurl}
               game={game}
               flippedCount={flippedCount}
               setFlippedCount={setFlippedCount}
@@ -135,6 +152,7 @@ function MemoryGame({options, setOptions, highScore, setHighScore}) {
 function Card({
   id,
   color,
+  pictureurl,
   game,
   flippedCount,
   setFlippedCount,
@@ -197,7 +215,8 @@ function Card({
         style={{
           opacity,
           transform: transform.interpolate(t => `${t} rotateX(180deg)`),
-          background: color,
+          // background: color,
+          backgroundImage: `url(${pictureurl})`,
         }}
       />
     </div>
